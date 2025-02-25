@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student Grade</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+
+        .container {
+            background-color: #ffffff; /* White background for the form container */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin-top: 2rem;
+        }
+
+        h1 {
+            color: #343a40; /* Dark gray for the heading */
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            color: #495057; /* Dark gray for labels */
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da; /* Light gray border */
+            padding: 0.5rem;
+        }
+
+        .form-control:focus {
+            border-color: #80bdff; /* Blue border on focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); /* Blue glow */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Bootstrap primary blue */
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .btn-secondary {
+            background-color: #6c757d; /* Bootstrap secondary gray */
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+        }
+
+        .btn {
+            transition: background-color 0.3s ease; /* Smooth hover transition */
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Edit Student Grade</h1>
+
+    <!-- Form to edit the student's grade -->
+    <form th:action="@{/admin/students/{id}/edit-grade(id=${student.id})}" method="post">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" th:value="${student.firstName}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" th:value="${student.lastName}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="cne" class="form-label">CNE</label>
+            <input type="text" class="form-control" id="cne" th:value="${student.cne}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="level" class="form-label">Grade (Level)</label>
+            <input type="text" class="form-control" id="level" name="grade" th:value="${student.level}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Grade</button>
+        <a th:href="@{/admin/students}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

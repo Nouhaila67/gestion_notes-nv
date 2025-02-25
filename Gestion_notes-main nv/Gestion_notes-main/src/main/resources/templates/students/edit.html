@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modifier l'Étudiant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .edit-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="edit-container">
+    <h1>Modifier l'Étudiant</h1>
+    <form th:action="@{/students/{id}/edit(id=${student.id})}" th:object="${student}" method="post">
+        <label for="cne">CNE:</label>
+        <input type="text" id="cne" th:field="*{cne}" required><br>
+        <label for="firstName">Prénom:</label>
+        <input type="text" id="firstName" th:field="*{firstName}" required><br>
+        <label for="lastName">Nom:</label>
+        <input type="text" id="lastName" th:field="*{lastName}" required><br>
+        <label for="level">Niveau:</label>
+        <input type="text" id="level" th:field="*{level}" required><br>
+        <button type="submit">Enregistrer</button>
+    </form>
+    <a href="/students">Retour à la liste</a>
+</div>
+</body>
+</html>
